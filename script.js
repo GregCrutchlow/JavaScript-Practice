@@ -178,50 +178,110 @@
 
 // console.log(types);
 
-const years = [1991, 2007, 1969, 2020];
+// const years = [1991, 2007, 1969, 2020];
 
-const ages = [];
+// const ages = [];
 
-for (let i = 0; i < years.length; i++) {
-    ages.push(2037 - years[i])
-}
+// for (let i = 0; i < years.length; i++) {
+//     ages.push(2037 - years[i])
+// }
 
-console.log(ages);
+// console.log(ages);
 
-const numbers = [1, 2, 3, 4, 'Five', 6, 7, 8, 9]
+// const numbers = [1, 2, 3, 4, 'Five', 6, 7, 8, 9]
 
-for (let i = numbers.length - 1; i >= 0; i--){
-    console.log( numbers[i]);
-}
+// for (let i = numbers.length - 1; i >= 0; i--){
+//     console.log( numbers[i]);
+// }
 
-const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52]
-const tips = []
-const totals = []
+// const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52]
+// const tips = []
+// const totals = []
 
-console.log(bills);
-console.log(tips);
-console.log(totals);
+// console.log(bills);
+// console.log(tips);
+// console.log(totals);
 
-const calcTip = (bill) => { 
-    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2
-}
+// const calcTip = (bill) => {
+//     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2
+// }
 
-for (let i = 0; i < bills.length; i++) {
-    const tip = calcTip(bills[i]);
-    tips.push(tip);
-    totals.push(bills[i] + tip);
-    // console.log(tips, totals);
-}
-console.log(bills, tips, totals);
+// for (let i = 0; i < bills.length; i++) {
+//     const tip = calcTip(bills[i]);
+//     tips.push(tip);
+//     totals.push(bills[i] + tip);
+//     // console.log(tips, totals);
+// }
+// console.log(bills, tips, totals);
 
-const calcAverage = function (arr) {
-    let sum = 0;
-    for (let i = 0; i < arr.length; i++) {
-        sum = sum + arr[i];
-    }
-    return sum / arr.length
-}
+// const calcAverage = function (arr) {
+//     let sum = 0;
+//     for (let i = 0; i < arr.length; i++) {
+//         sum = sum + arr[i];
+//     }
+//     return sum / arr.length
+// }
 
-console.log(calcAverage(totals));
-console.log(calcAverage(tips))
+// console.log(calcAverage(totals));
+// console.log(calcAverage(tips))
 
+// const game = {
+// 	team1: 'Bayern Munich',
+// 	team2: 'Borrussia Dortmund',
+// 	players: [
+// 		['Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies', 'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnarby', 'Lewandowski'],
+// 		['Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi', 'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze'],
+// 	],
+// 	score: '4:0',
+// 	scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+// 	date: 'Nov 9th, 2037',
+// 	odds: {
+// 		team1: 1.33,
+// 		x: 3.25,
+// 		team2: 6.5,
+// 	},
+// };
+
+// const [players1, players2] = game.players
+
+// console.log(game.players);
+
+// const [gk, ...fieldPlayers] = players1
+// console.log(gk, fieldPlayers);
+
+// const allPlayers = [...players1, ...players2]
+// console.log(allPlayers);
+
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Periscic']
+// console.log(players1Final);
+
+// const url = new url('https://restcountries.com/v3.1/name/canada');
+
+fetch(`https://restcountries.com/v3.1/name/portugal`)
+	.then((response) => response.json())
+    .then((data) => {
+        console.log(data)
+        const countryName = data[0].name.official
+        const flag = data[0].flags.png
+        const pop = data[0].population
+        const region = data[0].region
+        const subRegion = data[0].subregion
+        const neighbour = data[0].borders[0]
+        const capital = data[0].capital[0]
+    
+        const imgFlag = document.querySelector('.flag')
+        
+
+        imgFlag.innerHTML = `<img src=${flag} class='imgFlag'>
+        <div class="countryInfo">
+            <h2>Name: ${countryName}</h2>
+            <h3>Population: ${pop}</h3>
+            <h3>Continent: ${region}</h3>
+            <h3>Region: ${subRegion}</h3>
+            <h3>Borders: ${neighbour}</h3>
+            <h3>Capital: ${capital}</h3>
+        </div>`
+    })
+    .catch((error) => {
+        console.log('Error', error);
+    });
